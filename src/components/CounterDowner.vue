@@ -92,6 +92,10 @@ export default {
       type: Number,
       default: 2
     },
+    zeroes: {
+      type: Number,
+      default: 0
+    },
     nowForTesting: {
       type: Number,
       default: 0 // non-zero for testing
@@ -168,7 +172,9 @@ export default {
           continue
         }
         didNonZero = true
-        s[s.length] = u + this.indexUnit(i, u !== 1)
+        if (this.zeroes || u !== 0) {
+          s[s.length] = u + this.indexUnit(i, u !== 1)
+        }
         remain -= (u * g_CounterDowner_sUnitFactors[i])
       }
 

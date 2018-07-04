@@ -43,9 +43,28 @@ const situations = [
   { // Default props (2 values starting with days) but zero days, hours and minutes
     props: {
       // tuple is weeks, days, hours, minutes, seconds.
-      target: new Date(timeInFuture(gNow, [0,0,0,0,1])).toISOString()
+      target: new Date(timeInFuture(gNow, [0,0,0,0,1])).toISOString(),
+      zeroes: 1
     },
     render: '0 minutes, 1 second',
+    timeout: timeToNext(gNow, 0)
+  },
+  { // Default props (2 values starting with days) but zero days, hours and minutes
+    props: {
+      // tuple is weeks, days, hours, minutes, seconds.
+      target: new Date(timeInFuture(gNow, [0,0,0,0,1])).toISOString()
+    },
+    render: '1 second',
+    timeout: timeToNext(gNow, 0)
+  },
+  { // 3 values starting with days, but zero days, hours and minutes
+    props: {
+      // tuple is weeks, days, hours, minutes, seconds.
+      target: new Date(timeInFuture(gNow, [0,0,0,0,1])).toISOString(),
+      cascade: 3,
+      zeroes: 1
+    },
+    render: '0 hours, 0 minutes, 1 second',
     timeout: timeToNext(gNow, 0)
   },
   { // 3 values starting with days, but zero days, hours and minutes
@@ -54,7 +73,7 @@ const situations = [
       target: new Date(timeInFuture(gNow, [0,0,0,0,1])).toISOString(),
       cascade: 3
     },
-    render: '0 hours, 0 minutes, 1 second',
+    render: '1 second',
     timeout: timeToNext(gNow, 0)
   },
   { // One week
@@ -71,9 +90,19 @@ const situations = [
     props: {
       target: new Date(timeInFuture(gNow, [1,0,0,0,0])).toISOString(),
       cascade: 2,
-      resolution: 'week'
+      resolution: 'week',
+      zeroes: 1
     },
     render: '1 week, 0 days',
+    timeout: timeToNext(gNow, 3)
+  },
+  {
+    props: {
+      target: new Date(timeInFuture(gNow, [1,0,0,0,0])).toISOString(),
+      cascade: 2,
+      resolution: 'week'
+    },
+    render: '1 week',
     timeout: timeToNext(gNow, 3)
   },
   {
@@ -107,9 +136,19 @@ const situations = [
     props: {
       target: new Date(timeInFuture(gNow, [1,0,0,0,0])).toISOString(),
       cascade: 5,
-      resolution: 'week'
+      resolution: 'week',
+      zeroes: 1
     },
     render: '1 week, 0 days, 0 hours, 0 minutes, 0 seconds',
+    timeout: timeToNext(gNow, 0)
+  },
+  {
+    props: {
+      target: new Date(timeInFuture(gNow, [1,0,0,0,0])).toISOString(),
+      cascade: 5,
+      resolution: 'week'
+    },
+    render: '1 week',
     timeout: timeToNext(gNow, 0)
   },
   {
